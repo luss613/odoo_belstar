@@ -382,6 +382,12 @@ class hr_expense_expense(osv.osv):
         }
         return result
 
+    def is_officer_employee(self, cr, uid, ids, *args):	
+        for leave in self.browse(cr, uid, ids):
+            if uid==leave.employee_id.user_id.id:
+                return True
+            else:
+                return False
 
 class product_template(osv.osv):
     _inherit = "product.template"
